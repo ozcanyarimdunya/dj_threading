@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Django with Threading</title>
+  <style>
+    body {
+      font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    }
+
+    .main {
+      margin: 5rem;
+      padding: 1rem;
+      border: .1rem lightgray solid;
+    }
+
+    .start, .status {
+      padding: .5rem;
+    }
+
+    .result {
+      background-color: gray;
+      padding: .1rem;
+      border: .1rem darkgray solid;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="main">
+  <button class="start" onclick="onStart()">Start</button>
+  <button class="status" onclick="onStatus()">Status</button>
+  <p class="result" id="result"></p>
+</div>
+<script>
+  let taskId;
+
+  function onStart() {
+    const url = "/start/";
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        taskId = data.taskId;
+      })
+  }
+
+  function onStatus() {
+    const url = "/status/" + taskId;
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+        let result = document.getElementById('result');
+        result.innerHTML = result.innerHTML + '<br>' + data.message;
+      })
+  }
+</script>
+</body>
+</html>
