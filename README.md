@@ -1,8 +1,10 @@
 # Django with multithreading 
 
-Django background tasks with `threading` module.
+Django background tasks with `threading` module. 
 
 **NOTE:** No need celery anymore for single-time-run background tasks
+
+Documentation: [https://ozcanyarimdunya.github.io/dj_threading/](https://ozcanyarimdunya.github.io/dj_threading/)
 
 ## How it works
 

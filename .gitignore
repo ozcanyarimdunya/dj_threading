@@ -3,3 +3,5 @@ __pycache__/
 *.py[cod]
 db.sqlite3
 .idea
+/docusaurus/website/node_modules/
+/docusaurus/website/build/
